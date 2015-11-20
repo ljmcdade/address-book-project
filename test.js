@@ -5,6 +5,7 @@ var lodash = require('lodash');
 //var homeInfo = require('./home-address-entries');
 //console.log(homeInfo);
 
+showNewEntryView();
 
 function showNewEntryView() {
     inquirer.prompt([{
@@ -144,7 +145,7 @@ function showNewEntryView() {
         name: "workPhoneNumber",
         message: "Work phone number",
         when: function(answers) {
-            return answers.addressType.indexOf("Work") > -1;;
+            return answers.addressType.indexOf("Work") > -1;
         }
     }, {
         type: "list",
@@ -235,29 +236,26 @@ function showNewEntryView() {
         }
     }, ], function(answers) {
     
-
+        showAnswers(answers);
     });
 }
 
 
 
 
-
-
-function(answers) {
+function showAnswers(answers) {
     var table = new Table();
 
     lodash.forEach(answers, function(value, key) {
         table.push(
             [key, value]);
-    };
+    });
 
     //console.log(answers);
     console.log(table.toString());
     //do something with the user's answers
     //create key and value
-}
-);
+};
 
 
 
